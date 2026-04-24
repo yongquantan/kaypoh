@@ -1,0 +1,48 @@
+{
+  "url": "https://www.propertyguru.com.sg/listing/demo-tampines",
+  "title": "Modern 4BR in Tampines — Walk to Everything",
+  "address": "Tampines Avenue 9, Singapore",
+  "price_sgd": 1450000,
+  "bedrooms": 4,
+  "sqft": 1389,
+  "raw_copy": "Brand-new 4-bedroom unit in the fast-growing Tampines North estate. Just a 3 min walk to Tampines MRT — you'll be at work before your coffee cools. A quick 15 min drive takes you straight to Marina Bay Sands. Excellent amenities: wet markets, hawker centres, and at least 10 supermarkets within walking distance. Bordered by a lush park belt offering tranquil unobstructed park views from every window. Top-rated primary schools (including Poi Ching and St. Hilda's Primary) are right next door. Tampines Avenue 9 is a peaceful, quiet residential stretch — no traffic worries here. 1,389 sqft. S$1,450,000. Don't miss out on this rare gem.",
+  "photos": [],
+  "claims": [
+    {
+      "id": "c-01",
+      "type": "walk_time",
+      "raw_text": "3 min walk to Tampines MRT",
+      "parsed": {"target": "Tampines MRT", "minutes": 3, "mode": "walk"}
+    },
+    {
+      "id": "c-02",
+      "type": "drive_time",
+      "raw_text": "15 min drive to Marina Bay Sands",
+      "parsed": {"target": "Marina Bay Sands", "minutes": 15, "mode": "drive"}
+    },
+    {
+      "id": "c-03",
+      "type": "amenity",
+      "raw_text": "at least 10 supermarkets within walking distance",
+      "parsed": {"category": "supermarket", "proximity_phrase": "within walking distance"}
+    },
+    {
+      "id": "c-04",
+      "type": "view",
+      "raw_text": "tranquil unobstructed park views from every window",
+      "parsed": {"claim_phrase": "unobstructed park views", "direction_if_stated": null}
+    },
+    {
+      "id": "c-05",
+      "type": "school_access",
+      "raw_text": "Top-rated primary schools (including Poi Ching and St. Hilda's Primary) are right next door",
+      "parsed": {"target_type": "primary", "target_name": "Poi Ching School"}
+    },
+    {
+      "id": "c-06",
+      "type": "quiet",
+      "raw_text": "Tampines Avenue 9 is a peaceful, quiet residential stretch",
+      "parsed": {"claim_phrase": "peaceful, quiet residential stretch"}
+    }
+  ]
+}

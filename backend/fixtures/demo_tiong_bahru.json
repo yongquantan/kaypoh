@@ -1,0 +1,42 @@
+{
+  "url": "https://www.propertyguru.com.sg/listing/demo-tiong-bahru",
+  "title": "Heritage 2BR at Tiong Bahru Road — Walking Distance to MRT",
+  "address": "Tiong Bahru Road, Singapore",
+  "price_sgd": 1320000,
+  "bedrooms": 2,
+  "sqft": 818,
+  "raw_copy": "A rare chance to own in one of Singapore's most beloved heritage estates. This 2-bedroom apartment along Tiong Bahru Road is a comfortable 10 min walk to Tiong Bahru MRT, perfect for owner-occupiers who enjoy a stroll. A 14 min drive gets you to Raffles Place in light traffic. The neighbourhood offers a dense cluster of amenities — cafés, bakeries, and a well-loved wet market — within 10 minutes on foot. A 12 min walk brings you to Zhangde Primary School, a convenient option for families. Street view captures the iconic art-deco shophouses that define the area; see for yourself before you visit. 818 sqft, well-kept, asking S$1,320,000. Honest listing — come see the place.",
+  "photos": [],
+  "claims": [
+    {
+      "id": "c-01",
+      "type": "walk_time",
+      "raw_text": "10 min walk to Tiong Bahru MRT",
+      "parsed": {"target": "Tiong Bahru MRT", "minutes": 10, "mode": "walk"}
+    },
+    {
+      "id": "c-02",
+      "type": "drive_time",
+      "raw_text": "14 min drive to Raffles Place in light traffic",
+      "parsed": {"target": "Raffles Place", "minutes": 14, "mode": "drive"}
+    },
+    {
+      "id": "c-03",
+      "type": "amenity",
+      "raw_text": "dense cluster of amenities — cafés, bakeries, and a well-loved wet market — within 10 minutes on foot",
+      "parsed": {"category": "cafe", "proximity_phrase": "within 10 minutes on foot"}
+    },
+    {
+      "id": "c-04",
+      "type": "school_access",
+      "raw_text": "12 min walk brings you to Zhangde Primary School",
+      "parsed": {"target_type": "primary", "target_name": "Zhangde Primary School"}
+    },
+    {
+      "id": "c-05",
+      "type": "view",
+      "raw_text": "Street view captures the iconic art-deco shophouses",
+      "parsed": {"claim_phrase": "iconic art-deco shophouses", "direction_if_stated": null}
+    }
+  ]
+}

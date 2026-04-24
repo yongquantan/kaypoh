@@ -1,0 +1,48 @@
+{
+  "url": "https://www.propertyguru.com.sg/listing/demo-bishan",
+  "title": "Luxurious 3BR near Bishan MRT — the Catchment Dream",
+  "address": "Bishan Street 13, Singapore",
+  "price_sgd": 1680000,
+  "bedrooms": 3,
+  "sqft": 1119,
+  "raw_copy": "Welcome to this spacious 3-bedroom condo nestled in the heart of Bishan, a dream for families seeking both connectivity and tranquility. Just a 5 min walk to Bishan MRT interchange makes commuting a breeze, while a 12 min drive to Raffles Place gets you into the CBD in no time. Located on a quiet residential road, mornings here are refreshingly peaceful. Enjoy unobstructed greenery views over Bishan-Ang Mo Kio Park. Surrounded by amenities: supermarkets, clinics, and eateries all within 5 minutes on foot. Families will love the proximity to top primary schools — Catholic High and Ai Tong are within easy walking distance. 1,119 sqft of airy, thoughtful layout. Priced at S$1,680,000 — move-in ready.",
+  "photos": [],
+  "claims": [
+    {
+      "id": "c-01",
+      "type": "walk_time",
+      "raw_text": "5 min walk to Bishan MRT interchange",
+      "parsed": {"target": "Bishan MRT", "minutes": 5, "mode": "walk"}
+    },
+    {
+      "id": "c-02",
+      "type": "drive_time",
+      "raw_text": "12 min drive to Raffles Place",
+      "parsed": {"target": "Raffles Place", "minutes": 12, "mode": "drive"}
+    },
+    {
+      "id": "c-03",
+      "type": "quiet",
+      "raw_text": "Located on a quiet residential road",
+      "parsed": {"claim_phrase": "quiet residential road"}
+    },
+    {
+      "id": "c-04",
+      "type": "view",
+      "raw_text": "unobstructed greenery views over Bishan-Ang Mo Kio Park",
+      "parsed": {"claim_phrase": "unobstructed greenery views", "direction_if_stated": null}
+    },
+    {
+      "id": "c-05",
+      "type": "amenity",
+      "raw_text": "supermarkets, clinics, and eateries all within 5 minutes on foot",
+      "parsed": {"category": "supermarket", "proximity_phrase": "within 5 minutes on foot"}
+    },
+    {
+      "id": "c-06",
+      "type": "school_access",
+      "raw_text": "top primary schools — Catholic High and Ai Tong are within easy walking distance",
+      "parsed": {"target_type": "primary", "target_name": "Catholic High School"}
+    }
+  ]
+}
