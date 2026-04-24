@@ -1175,3 +1175,506 @@ p {
     width: 100%;
   }
 }
+
+/* ---------- MapLibre integration additions ---------- */
+
+.map-layer-host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.maplibre-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure feed-card and map-controls sit above the map */
+.feed-card,
+.map-controls {
+  z-index: 5;
+}
+
+.map-warning-banner {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: rgba(138, 36, 36, 0.92);
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Street view overlay rendered inside the map stage */
+.streetview-overlay {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: min(320px, calc(100% - 32px));
+  background: var(--bg-panel);
+  border: 1px solid var(--border-heavy);
+  border-radius: 6px;
+  box-shadow: var(--shadow-panel);
+  z-index: 6;
+  overflow: hidden;
+}
+
+.streetview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-main);
+}
+
+.streetview-head button {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.streetview-body img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.streetview-empty {
+  padding: 24px 12px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.streetview-foot {
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-main);
+}
+
+/* Fixture chips row sits under the header */
+.fixture-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--border-main);
+  background: var(--bg-panel);
+  flex: 0 0 auto;
+}
+
+.fixture-label {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.fixture-chip {
+  border: 1px solid var(--border-heavy);
+  background: var(--bg-app);
+  color: var(--text-main);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.fixture-chip:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.fixture-chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.audit-search button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Pending claim state */
+.claim-card.is-pending {
+  opacity: 0.85;
+}
+
+.pending-stamp {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.verdict-plain {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.ledger-empty {
+  padding: 16px;
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+
+/* Wayang flip-to-seller controls */
+.wayang-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.flip-button {
+  border: 0;
+  padding: 10px 18px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.flip-button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.flip-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hint-muted {
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+.hint-danger {
+  color: #c24a3f;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+.copy-placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Ensure the map stage clips MapLibre's canvas to the rounded container */
+.map-stage {
+  isolation: isolate;
+}
+
+/* ======================================================================
+ * Audit progress — spinner, phase chain, per-claim progress bar
+ * ====================================================================== */
+
+.btn-spinning {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.btn-spinning svg {
+  width: 14px;
+  height: 14px;
+  animation: kp-spin 0.9s linear infinite;
+}
+
+@keyframes kp-spin {
+  to { transform: rotate(360deg); }
+}
+
+.audit-progress {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  padding: 0.7rem 0.85rem;
+  margin: 0.45rem 1.25rem 0.25rem;
+  border-radius: 10px;
+}
+
+.audit-progress-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.audit-spinner {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.audit-spinner svg {
+  width: 16px;
+  height: 16px;
+}
+
+.audit-spinner.spinning svg {
+  animation: kp-spin 0.9s linear infinite;
+  color: var(--accent-good, #86efac);
+}
+
+.audit-spinner.done svg {
+  color: var(--accent-good, #86efac);
+}
+
+.audit-progress-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-muted, rgba(255,255,255,0.72));
+}
+
+.phase-chain {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.phase-chain .phase {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  color: var(--fg-muted, rgba(255, 255, 255, 0.5));
+}
+
+.phase-chain .phase-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.phase-chain .phase-active {
+  color: #facc15;
+  border-color: rgba(250, 204, 21, 0.45);
+  background: rgba(250, 204, 21, 0.08);
+}
+
+.phase-chain .phase-active .phase-dot {
+  animation: kp-pulse 1s ease-in-out infinite;
+  opacity: 1;
+}
+
+.phase-chain .phase-done {
+  color: #86efac;
+  border-color: rgba(134, 239, 172, 0.35);
+}
+
+.phase-chain .phase-done .phase-dot {
+  opacity: 1;
+}
+
+.phase-chain .phase-pending {
+  color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes kp-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+.progress-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.progress-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+}
+
+.progress-count {
+  color: #facc15;
+  font-weight: 700;
+}
+
+.progress-type {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.progress-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, #facc15, #86efac);
+  transition: width 0.3s ease-out;
+  border-radius: 999px;
+}
+
+/* ======================================================================
+ * Wayang: <mark> highlighting + improvements diff panel
+ * ====================================================================== */
+
+.listing-copy mark {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 55%,
+    rgba(250, 204, 21, 0.28) 55%,
+    rgba(250, 204, 21, 0.28) 100%
+  );
+  color: inherit;
+  padding: 0 0.05em;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.improvements-panel {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+}
+
+.improvements-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.6rem;
+}
+
+.improvements-title h3 {
+  margin: 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-muted, rgba(255, 255, 255, 0.7));
+}
+
+.improvements-title svg {
+  width: 15px;
+  height: 15px;
+  color: #facc15;
+}
+
+.improvements-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.improvements-panel li {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "was  arrow now"
+    "why  why   why";
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+  padding: 0.55rem 0.7rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+}
+
+.improvements-panel .imp-was {
+  grid-area: was;
+  font-size: 0.8rem;
+  color: rgba(248, 113, 113, 0.85);
+  text-decoration: line-through;
+  text-decoration-color: rgba(248, 113, 113, 0.45);
+}
+
+.improvements-panel .imp-arrow {
+  grid-area: arrow;
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.improvements-panel .imp-now {
+  grid-area: now;
+  font-size: 0.82rem;
+  color: #86efac;
+  font-weight: 500;
+}
+
+.improvements-panel .imp-why {
+  grid-area: why;
+  display: block;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  padding-top: 0.25rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.06);
+  margin-top: 0.25rem;
+}
+
+/* Tighter layout for the photo brief items now that they render as a real list */
+.proof-brief label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+}
+.proof-brief label:last-child { border-bottom: 0; }
+.proof-brief input[type='checkbox'] {
+  margin-top: 0.25rem;
+}
