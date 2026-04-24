@@ -1,0 +1,104 @@
+<!--
+  Pitch-slide artefact: raw output of the GrabMaps MCP tool
+  `generate_builder_map_code`, called once on 2026-04-24 with:
+    center_lat=1.3521, center_lng=103.8198, zoom=12, language=javascript
+    map_config.{enable_navigation, enable_buildings, enable_labels,
+                enable_attribution}
+    search_config.{max_results=10, placeholder, fly_to_on_select}
+    route_config.{enabled, color=#a5282a, width=4}
+    street_view_config.{enable_compass, enable_minimap}
+    incident_config.{enable_icons, enable_labels}
+
+  This HTML is NOT the app. It is evidence that a GrabMaps codegen tool
+  scaffolded a working MapLibre-backed map app — which informs Kaypoh's
+  `src/components/MapPanel.jsx`. BASE_URL_HERE has been substituted for
+  the public host.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrabMaps - Config-Based Map Example</title>
+    <link href="https://maps.grab.com/assets/css/maplibre-gl.css" rel="stylesheet">
+    <link href="https://maps.grab.com/assets/css/grabmaps.css" rel="stylesheet">
+</head>
+<body>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search listings...">
+        <div id="search-results"></div>
+    </div>
+
+    <div id="control-panel">
+        <button id="toggle-incidents" class="control-button">Toggle Incidents</button>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://maps.grab.com/assets/js/maplibre-gl.js"></script>
+
+    <script type="module">
+        const { default: GrabMapsLib,
+            StreetViewBuilder,
+            RoutingIntegrationBuilder } = await import(`https://maps.grab.com/assets/js/grabmaps.es.js?v=${Date.now()}`);
+
+        let grabMap;
+
+        const mapInstance = new GrabMapsLib({
+            container: 'map',
+            baseUrl: 'https://maps.grab.com/',
+            apiKey: 'YOUR_API_KEY_HERE',
+            lat: 1.352100,
+            lng: 103.819800,
+            zoom: 12,
+            navigation: true,
+            attribution: true,
+            buildings: true,
+            labels: true,
+            coverage: true,
+            interactive: true,
+            showContextMenu: true,
+            showLayersMenu: false,
+            layers: { defaultLayers: ['buildings', 'poi'] },
+            showSearchBar: true,
+            search: { maxResults: 10 },
+            routing: { enabled: true, color: '#a5282a', width: 4 },
+            showWaypointsModal: false,
+            traffic: null,
+            enableGrabbie: true,
+            streetView: {},
+            enableCameraMode: true,
+            incidents: {
+                enableIcons: true,
+                enableLabels: true,
+                showByDefault: false,
+            },
+        });
+
+        grabMap = mapInstance;
+        window.grabMap = mapInstance;
+        window.mapInstance = mapInstance;
+        window.map = mapInstance.getMap();
+
+        const streetView = new StreetViewBuilder(mapInstance, map)
+            .enableMinimap()
+            .enableCompass()
+            .enableNavigationDots()
+            .enableAutoRefetch()
+            .build();
+        window.streetView = streetView;
+
+        let routing;
+        try {
+            routing = new RoutingIntegrationBuilder(mapInstance, map)
+                .setRouteColor('#a5282a')
+                .setRouteWidth(4)
+                .build();
+            window.routing = routing;
+        } catch (routingError) {
+            console.warn('Routing initialization failed:', routingError);
+            window.routing = null;
+        }
+    </script>
+</body>
+</html>
